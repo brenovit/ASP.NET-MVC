@@ -1,0 +1,26 @@
+﻿@model PostGetModel.Models.Pessoa
+
+@{
+    ViewBag.Title = "Lista";
+}
+
+<h2>Lista</h2>
+Usando o lambda onde x representa o model e x.atributo o objeto do model, ja que a view é tipada
+<div><b>@Html.LabelFor(x => x.PessoaId)</b></div>
+<div>@Model.PessoaId</div>
+
+<div><b>@Html.LabelFor(x => x.Nome)</b></div>
+<div>@Model.Nome</div>
+
+<div><b>@Html.LabelFor(x => x.Twitter)</b></div>
+<div>@Model.Twitter</div>
+
+usando
+<div><b>ID:</b></div>
+<div>@ViewData["PessoaId"]</div>
+
+<div><b>Nome:</b></div>
+<div>@ViewData["Nome"]</div>
+
+<div><b>Twitter:</b></div>
+<div>@ViewData["Twitter"]</div>

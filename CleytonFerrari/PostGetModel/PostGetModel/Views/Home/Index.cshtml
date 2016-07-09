@@ -1,0 +1,64 @@
+﻿@model PostGetModel.Models.Pessoa
+
+@{
+    ViewBag.Title = "Index";
+}
+<!-- Esta é minha view, minha página principal, ela herda os itens contidos em _Layout.cshtml -->
+<h2>Indice</h2>
+<div>
+    <!--<form action="Home/Lista" method="post">-->
+    @using (Html.BeginForm("Lista","Home", FormMethod.Post))
+    {
+        <fieldset>
+            <legend>Pessoa</legend>
+            <!--<div><label for="PessoaId">Código</label></div>-->
+            <div>@Html.LabelFor(x=>x.PessoaId)</div>
+
+             <!--<div><input id="PessoaId" type="number" value= "@Model.PessoaId" name="PessoaId" /></div>-->
+            <div>@Html.EditorFor(x=>x.PessoaId)</div>
+            
+            <div>@Html.LabelFor(x => x.Nome)</div>
+            <div>@Html.EditorFor(x => x.Nome)</div>
+
+            <div>@Html.LabelFor(x => x.Twitter)</div>
+            <div>@Html.EditorFor(x => x.Twitter)</div>
+
+            <!--<div><label for="Nome">Nome</label></div>
+            <div><input id="Nome" type="text" value="@Model.Nome" name="Nome" /></div>
+            <div><label for="Twitter">Twitter</label></div>
+            <div><input id="Twitter" type="text" value="@Model.Twitter" name="Twitter" /></div>-->
+            <p><input id="Submit1" type="submit" value="Enviar" /></p>
+        </fieldset>
+    }
+    <!--</form>-->
+        
+</div>
+<br>
+<div>
+    <table style="width:100%;">
+        <tr>
+            <td>Dados</td>
+            <td>Usando ViewData</td>
+            <td>Usando ViewBag</td>
+            <td>View Tipada</td>
+        </tr>
+        <tr>
+            <td>ID</td>
+            <td>@ViewData["PessoaId"]</td>
+            <td>@ViewBag.pid</td>
+            <td>@Model.PessoaId</td>
+        </tr>
+        <tr>
+            <td>Nome</td>
+            <td>@ViewData["Nome"]</td>
+            <td>@ViewBag.pnome</td>
+            <td>@Model.Nome</td>
+        </tr>
+        <tr>
+            <td>Twitter</td>
+            <td>@ViewData["Twitter"]</td>
+            <td>@ViewBag.ptwit</td>
+            <td>@Model.Twitter</td>
+        </tr>
+    </table>
+</div>
