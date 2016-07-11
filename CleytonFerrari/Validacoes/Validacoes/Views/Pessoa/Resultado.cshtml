@@ -1,0 +1,45 @@
+﻿@model Validacoes.Models.Pessoa
+
+@{
+    ViewBag.Title = "Lista de dados da Pessoa valida";
+}
+
+<h2>Lista de dados da Pessoa valida</h2>
+<fieldset>
+    <legend>Pessoa</legend>
+    <div class="control-label">
+        @Html.DisplayNameFor(model => model.Nome)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nome)
+    </div>
+
+    <div class="control-label">
+        @Html.DisplayNameFor(model => model.Observacao)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Observacao)
+    </div>
+
+    <div class="control-label">
+        @Html.DisplayNameFor(model => model.Idade)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Idade)
+    </div>
+
+    <div class="control-label">
+        @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="control-label">
+        @Html.DisplayNameFor(model => model.Login)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Login)
+    </div>
+    <p>@Html.ActionLink("Voltar", "Index")</p>
+</fieldset>

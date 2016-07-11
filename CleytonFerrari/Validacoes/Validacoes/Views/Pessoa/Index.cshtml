@@ -1,0 +1,76 @@
+﻿@model Validacoes.Models.Pessoa
+
+@{
+    ViewBag.Title = "Validação de Pessoa";
+}
+<head>
+    @Scripts.Render("~/bundles/jqueryval")
+</head>
+
+<h2>Validação de Pessoa</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <!--se passar true ele só apresenta os erros de validação do modelo, 
+        se não passar true ele mostra o resultado das validação das propriedades e modelos -->
+    <fieldset>
+        <legend>Dados da Pessoa</legend>
+        <div class="control-label">
+            @Html.LabelFor(model => model.Nome)
+        </div>
+        <div class="input-group">
+            @Html.EditorFor(model => model.Nome)
+            @Html.ValidationMessageFor(model => model.Nome)
+            <!-- se tiver mensagem de erro sera exibido -->
+        </div>
+        <div class="control-label">
+            @Html.LabelFor(model => model.Observacao)
+        </div>
+        <div class="input-group">
+            @Html.TextAreaFor(model => model.Observacao)
+            @Html.ValidationMessageFor(model => model.Observacao)
+            <!-- se tiver mensagem de erro sera exibido -->
+        </div>
+        <div class="control-label">
+            @Html.LabelFor(model => model.Idade)
+        </div>
+        <div class="input-group">
+            @Html.EditorFor(model => model.Idade)
+            @Html.ValidationMessageFor(model => model.Idade)
+            <!-- se tiver mensagem de erro sera exibido -->
+        </div>
+        <div class="control-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="input-group">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+            <!-- se tiver mensagem de erro sera exibido -->
+        </div>
+        <div class="control-label">
+            @Html.LabelFor(model => model.Login)
+        </div>
+        <div class="input-group">
+            @Html.EditorFor(model => model.Login)
+            @Html.ValidationMessageFor(model => model.Login)
+            <!-- se tiver mensagem de erro sera exibido -->
+        </div>
+        <div class="control-label">
+            @Html.LabelFor(model => model.Senha)
+        </div>
+        <div class="input-group">
+            @Html.PasswordFor(model => model.Senha)
+            @Html.ValidationMessageFor(model => model.Senha)
+            <!-- se tiver mensagem de erro sera exibido -->
+        </div>
+        <div class="control-label">
+            @Html.LabelFor(model => model.ConfirmacaoSenha)
+        </div>
+        <div class="input-group">
+            @Html.PasswordFor(model => model.ConfirmacaoSenha)
+            @Html.ValidationMessageFor(model => model.Senha)
+            <!-- se tiver mensagem de erro sera exibido -->
+        </div>
+        <p><input type="submit" value="Cadastrar" /></p>
+    </fieldset>
+}
