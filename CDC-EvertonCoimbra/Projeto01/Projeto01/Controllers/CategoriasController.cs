@@ -1,7 +1,9 @@
-﻿using Projeto01.Models;
+﻿using Projeto01.Context;
+using Projeto01.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,7 +11,7 @@ namespace Projeto01.Controllers
 {
     public class CategoriasController : Controller
     {
-        public static IList<Categoria> categorias = new List<Categoria>()
+        /*public static IList<Categoria> categorias = new List<Categoria>()
         {
             new Categoria()
             {
@@ -36,11 +38,13 @@ namespace Projeto01.Controllers
                 CategoriaID = 5,
                 Nome = "Desktops"
             }
-        };
+        };*/
+        private EFContext context = new EFContext();
+        
         // GET: Categorias
         public ActionResult Index()
         {
-            return View(categorias.OrderBy(c => c.Nome));
+            return View(context.Categorias.OrderBy(c => c.Nome));
         }
 
         // GET: Create        
@@ -48,51 +52,69 @@ namespace Projeto01.Controllers
         {
             return View();
         }
-
+        // POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Categoria categoria)
-        {            
-            categoria.CategoriaID = categorias.Select(c => c.CategoriaID).Max() + 1;
-            categorias.Add(categoria);
+        {
+            context.Categorias.Add(categoria);
+            context.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        // GET: Edit
-        public ActionResult Edit(long id)
+        // GET: Read
+        public ActionResult Details(long? id)
         {
-            return View(categorias.Where(c => c.CategoriaID == id).First());
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            Categoria categoria = context.Categorias.Find(id);
+            if (categoria == null)
+                return HttpNotFound();
+            return View(categoria);
         }
 
+        // GET: Update
+        public ActionResult Edit(long? id)
+        {
+            if(id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            Categoria categoria = context.Categorias.Find(id);
+            if(categoria == null)
+                return HttpNotFound();
+            return View(categoria);
+        }
+        // POST: Update
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Categoria categoria)
         {
-            categorias.Remove(categorias.Where(c => c.CategoriaID == categoria.CategoriaID).First());            
-            categorias.Add(categoria);
-            //Alternativa para a possibilidade acima, remover o iten e depois adicionar
-            //categorias[categorias.IndexOf(categorias.Where(c => c.CategoriaID == categoria.CategoriaID).First())] = categoria;
-            return RedirectToAction("Index");
-        }
-
-        // GET: Detail
-        public ActionResult Details(long id)
-        {
-            return View(categorias.Where(c => c.CategoriaID == id).First());
+            if (ModelState.IsValid)
+            {
+                context.Entry(categoria).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(categoria);
         }
 
         // GET: Delete
-        public ActionResult Delete(long id)
+        public ActionResult Delete(long? id)
         {
-            //return View(categorias.Where(c => c.CategoriaID == id).First());
-            return View(categorias.First(c => c.CategoriaID == id));
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            Categoria categoria = context.Categorias.Find(id);
+            if (categoria == null)
+                return HttpNotFound();
+            return View(categoria);
         }
-
+        // POST: Delete
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(Categoria categoria)
+        public ActionResult Delete(long id)
         {
-            categorias.Remove(categorias.Where(c => c.CategoriaID == categoria.CategoriaID).First());
+            Categoria categoria = context.Categorias.Find(id);
+            context.Categorias.Remove(categoria);
+            context.SaveChanges();
             return RedirectToAction("Index");
         }
     }
