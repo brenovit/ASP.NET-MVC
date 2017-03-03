@@ -1,17 +1,11 @@
 ﻿@model IEnumerable<Projeto01.Models.Fabricante>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Fabricantes";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
+<div>
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
@@ -37,5 +31,4 @@
     }
     
     </table>
-</body>
-</html>
+</div>

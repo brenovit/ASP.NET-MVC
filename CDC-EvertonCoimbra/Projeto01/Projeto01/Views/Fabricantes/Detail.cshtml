@@ -1,17 +1,10 @@
 ﻿@model Projeto01.Models.Fabricante
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Detalhes Fabricante";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Detail</title>
-</head>
-<body>
+<div>
     <div>
         <h4>Fabricante</h4>
         <hr />
@@ -19,16 +12,15 @@
             <dt>
                 @Html.DisplayNameFor(model => model.Nome)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Nome)
             </dd>
-    
+
         </dl>
     </div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.FabricanteID }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
-</body>
-</html>
+</div>

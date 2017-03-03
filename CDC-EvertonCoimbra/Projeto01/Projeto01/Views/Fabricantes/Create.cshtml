@@ -1,17 +1,10 @@
 ﻿@model Projeto01.Models.Fabricante
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Deletar Fabricante";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
+<div>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
@@ -44,5 +37,4 @@
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>
-</body>
-</html>
+</div>
