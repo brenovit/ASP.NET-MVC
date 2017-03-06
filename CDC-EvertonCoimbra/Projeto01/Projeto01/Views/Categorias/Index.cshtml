@@ -1,33 +1,62 @@
 ﻿@model IEnumerable<Projeto01.Models.Categoria>
-
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Categorias";
+    ViewBag.Title = "Relação de Categorias";
 }
-<div>
-    <p>
-        @Html.ActionLink("Criar nova categoria", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.CategoriaID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.CategoriaID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.CategoriaID })
-            </td>
-        </tr>
-    }
-    
-    </table>
+@if (@TempData["Message"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Message"]
+    </div>
+}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Relação de Categorias
+    </div>
+    <div class="panel-body">
+        <table class="table	table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.CategoriaID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.CategoriaID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.CategoriaID })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer panel-info">
+        @Html.ActionLink("Adicionar Fabricante", "Create", null, new { @class = "btn btn-success" })
+    </div>
 </div>
+@section styles{
+    <link href="@Url.Content("~/content/DataTables/css/dataTables.bootstrap.css")" rel="stylesheet" />
+}
+@section ScriptPage	{
+    <script src="@Url.Content("~/scripts/DataTables/jquery.dataTables.js")"></script>
+    <script src="@Url.Content("~/scripts/DataTables/dataTables.bootstrap.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.table').dataTable({
+                "order": [[1, "acs"]]
+            });
+            $('li').removeClass("active");
+            $("#liCategorias").addClass("active");
+        });
+    </script>
+}
