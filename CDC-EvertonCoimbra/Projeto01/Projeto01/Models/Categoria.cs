@@ -10,5 +10,6 @@ namespace Projeto01.Models
         public long CategoriaID { get; set; }
         public string Nome { get; set; }
 
+        public virtual ICollection<Produto> Produtos { get; set; }
     }
 }
