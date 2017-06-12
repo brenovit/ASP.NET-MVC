@@ -6,8 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Projeto01.Context;
-using Projeto01.Models;
+using Persistencia.Context;
+using Modelo.Tabela;
+using Modelo.Cadastros;
 
 namespace Projeto01.Controllers
 {

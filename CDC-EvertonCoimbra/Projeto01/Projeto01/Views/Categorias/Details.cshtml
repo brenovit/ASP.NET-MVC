@@ -1,4 +1,4 @@
-﻿@model Projeto01.Models.Categoria
+﻿@model Modelo.Tabela.Categoria
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Detalhes Categoria";
@@ -17,8 +17,8 @@
         </div>
     </div>
     <div class="panel-footer panel-info">
-        @Html.ActionLink("Alterar", "Edit", new { id = Model.CategoriaID }, new { @class = "btn btn-info" })
-        @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-info" })
+        @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Alterar", "Edit", new { id = Model.CategoriaID }, new { @class = "btn btn-danger" })
     </div>
 </div>
 

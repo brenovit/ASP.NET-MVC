@@ -1,4 +1,4 @@
-﻿@model Projeto01.Models.Categoria
+﻿@model Modelo.Tabela.Categoria
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Alterar Categoria";
@@ -21,8 +21,8 @@
             </div>
             <div class="panel-footer panel-info">
                 <div class="col-md-offset-2	col-md-10">
-                    <input type="submit" value="Salvar alterações" class="btn btn-info" />
                     @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-warning" })
+                    <input type="submit" value="Salvar alterações" class="btn btn-info" />
                 </div>
                 <br />
                 <br />

@@ -1,4 +1,4 @@
-﻿@model Projeto01.Models.Categoria
+﻿@model Modelo.Tabela.Categoria
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Deletar Categoria";
@@ -20,8 +20,9 @@
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
+
+            @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-default" })
             <input type="submit" value="Remover" class="btn btn-danger" />
-            @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-info" })
         }
     </div>
 </div>

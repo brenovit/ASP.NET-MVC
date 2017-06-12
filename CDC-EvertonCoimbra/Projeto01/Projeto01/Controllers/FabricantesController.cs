@@ -1,5 +1,6 @@
-﻿using Projeto01.Context;
-using Projeto01.Models;
+﻿using Persistencia.Context;
+using Modelo.Tabela;
+using Modelo.Cadastros;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
