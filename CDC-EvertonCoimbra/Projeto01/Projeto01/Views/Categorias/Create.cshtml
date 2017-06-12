@@ -7,9 +7,6 @@
 {
     @Html.AntiForgeryToken()
     <div class="panel panel-primary">
-        <div class="panel-heading">
-            Adicionar Categoria
-        </div>
         <div class="panel-body">
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -23,9 +20,9 @@
             </div>
         </div>
         <div class="panel-footer panel-info">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Adicionar" class="btn btn-danger" />
-                @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-warning" })
+            <div class="col-md-offset-2 col-md-10">                
+                @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-default" })
+                <input type="submit" value="Adicionar" class="btn btn-success" />
             </div>
             <br />
             <br />

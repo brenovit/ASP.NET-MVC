@@ -2,6 +2,7 @@
 using Projeto01.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -11,34 +12,6 @@ namespace Projeto01.Controllers
 {
     public class CategoriasController : Controller
     {
-        /*public static IList<Categoria> categorias = new List<Categoria>()
-        {
-            new Categoria()
-            {
-                CategoriaID = 1,
-                Nome = "Notebooks"
-            },
-            new Categoria()
-            {
-                CategoriaID = 2,
-                Nome = "Monitores"
-            },
-            new Categoria()
-            {
-                CategoriaID = 3,
-                Nome = "Impressoras"
-            },
-            new Categoria()
-            {
-                CategoriaID = 4,
-                Nome = "Mouses"
-            },
-            new Categoria()
-            {
-                CategoriaID = 5,
-                Nome = "Desktops"
-            }
-        };*/
         private EFContext context = new EFContext();
         
         // GET: Categorias
@@ -67,7 +40,7 @@ namespace Projeto01.Controllers
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            Categoria categoria = context.Categorias.Find(id);
+            Categoria categoria = context.Categorias.Where(c => c.CategoriaID == id).Include("Produtos.Fabricante").First();
             if (categoria == null)
                 return HttpNotFound();
             return View(categoria);

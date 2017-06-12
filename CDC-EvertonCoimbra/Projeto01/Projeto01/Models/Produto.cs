@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,7 @@ namespace Projeto01.Models
     public class Produto
     {
         public long? ProdutoID { get; set; }
+        [DisplayName("Produto")]
         public string Nome { get; set; }
 
         public long? CategoriaID { get; set; }

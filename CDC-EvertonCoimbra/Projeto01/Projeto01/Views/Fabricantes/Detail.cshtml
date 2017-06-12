@@ -4,9 +4,6 @@
     ViewBag.Title = "Detalhes Fabricante";
 }
 <div class="panel panel-primary">
-    <div class="panel-heading">
-        Detalhes dos Fabricantes
-    </div>
     <div class="panel-body">
         <div class="form-group">
             @Html.LabelFor(model => model.Nome)
@@ -24,3 +21,5 @@
         @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-info" })
     </div>
 </div>
+
+@Html.Partial("~/Views/Produtos/_PorFabricante.cshtml", Model.Produtos.ToList())

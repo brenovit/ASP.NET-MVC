@@ -25,6 +25,7 @@ namespace Projeto01.Controllers
         {
             return View();
         }
+
         // POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -40,7 +41,7 @@ namespace Projeto01.Controllers
         {
             if (id == null) //para pegar os detalhes, verifica se o ID do get é nulo
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest); //retorna uma visão de erro informanado uma requisição ruim
-            Fabricante fabricante = context.Fabricantes.Find(id);   //busca e retorna um objeto fabricante que tenho o id informado
+            Fabricante fabricante = context.Fabricantes.Where(f => f.FabricanteID == id).Include("Produtos.Categoria").First();   //busca e retorna um objeto fabricante que tenho o id informado
             if (fabricante == null) //se a busca retornar nulo
                 return HttpNotFound();  //retorna uma visão de item não encontrado
             return View(fabricante);        //se a buscar der certo, retorna uma visão de edição com os dados do objeto separados nos campos
@@ -56,6 +57,7 @@ namespace Projeto01.Controllers
                 return HttpNotFound();
             return View(fabricante);
         }
+
         // POST: Update
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -80,6 +82,7 @@ namespace Projeto01.Controllers
                 return HttpNotFound();
             return View(fabricante);
         }
+
         // POST: Delete
         [HttpPost]
         [ValidateAntiForgeryToken]

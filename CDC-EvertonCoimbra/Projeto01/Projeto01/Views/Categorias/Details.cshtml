@@ -4,9 +4,6 @@
     ViewBag.Title = "Detalhes Categoria";
 }
 <div class="panel panel-primary">
-    <div class="panel-heading">
-        Detalhes dos Categorias
-    </div>
     <div class="panel-body">
         <div class="form-group">
             @Html.LabelFor(model => model.Nome)
@@ -20,7 +17,9 @@
         </div>
     </div>
     <div class="panel-footer panel-info">
-        @Html.ActionLink("Alterar", "Edit", new { id = Model.FabricanteID }, new { @class = "btn btn-info" })
+        @Html.ActionLink("Alterar", "Edit", new { id = Model.CategoriaID }, new { @class = "btn btn-info" })
         @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-info" })
     </div>
 </div>
+
+@Html.Partial("~/Views/Produtos/_PorCategoria.cshtml", Model.Produtos.ToList())

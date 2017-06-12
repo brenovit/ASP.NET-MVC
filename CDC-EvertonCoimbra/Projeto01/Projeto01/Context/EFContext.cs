@@ -9,7 +9,7 @@ namespace Projeto01.Context
 {
     public class EFContext : DbContext
     {
-        public EFContext() : base("Asp_Net_MVC_CD") {
+        public EFContext() : base("Banco") {
             Database.SetInitializer<EFContext>(new DropCreateDatabaseIfModelChanges<EFContext>());
         }
 
