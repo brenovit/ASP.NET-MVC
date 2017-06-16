@@ -9,21 +9,21 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL.Cadastros
 {
-    class ProdutoDAL
+    public class ProdutoDAL
     {
         private EFContext context = new EFContext();
 
-        public IQueryable<Produto> ObterProdutoClassificadosPorNome()
+        public IQueryable<Produto> ObterClassificadosPorNome()
         {
-            return context.Produtos.OrderBy(b => b.Nome);
+            return context.Produtos.OrderBy(b => b.Nome).Include(c => c.Categoria).Include(f => f.Fabricante);
         }
 
-        public Produto ObterProdutoPorId(long id)
+        public Produto ObterPorId(long id)
         {
             return context.Produtos.Where(p => p.ProdutoID == id).Include(c => c.Categoria).Include(f => f.Fabricante).First();
         }
 
-        public void GravarProduto(Produto produto)
+        public void Gravar(Produto produto)
         {
             if(produto.ProdutoID == null)
             {
@@ -35,9 +35,9 @@ namespace Persistencia.DAL.Cadastros
             context.SaveChanges();
         }
 
-        public Produto EliminarProdutoPorId(long id)
+        public Produto EliminarPorId(long id)
         {
-            Produto produto = ObterProdutoPorId(id);
+            Produto produto = ObterPorId(id);
             context.Produtos.Remove(produto);
             context.SaveChanges();
             return produto;

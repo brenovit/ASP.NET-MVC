@@ -3,39 +3,16 @@
     ViewBag.Title = "Detalhes Produto";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="panel panel-primary">    
+<div class="panel panel-primary">
     <div class="panel-body">
-        <div class="form-group">
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Categoria.Nome)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Categoria.Nome)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Fabricante.Nome)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Fabricante.Nome)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Nome)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Nome)
-                </dd>
-
-            </dl>
-        </div>
+        @Html.Partial("~/Views/Produtos/_PartialDetailsContentPanel.cshtml", Model)
     </div>
     <div class="panel-footer panel-info">
-        @Html.ActionLink("Alterar", "Edit", new { id = Model.FabricanteID }, new { @class = "btn btn-info" })
-        @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-info" })
+        <div class="col-md-offset-2	col-md-10">
+            @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Alterar", "Edit", new { id = Model.FabricanteID }, new { @class = "btn btn-danger" })
+        </div>
+        <br />
+        <br />
     </div>
 </div>

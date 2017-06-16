@@ -5,20 +5,15 @@
 }
 <div class="panel panel-primary">
     <div class="panel-body">
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nome)
-            <br />
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-user"></i>
-                </span>
-                @Html.EditorFor(model => model.Nome, new { htmlAttribute = new { @class = "form-control", disabled = "disabled" }})
-            </div>
-        </div>
+        @Html.Partial("~/Views/Fabricantes/_PartialDetailsContentPanel.cshtml", Model)
     </div>
     <div class="panel-footer panel-info">
-        @Html.ActionLink("Alterar", "Edit", new { id = Model.FabricanteID }, new { @class = "btn btn-info" })
-        @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-info" })
+        <div class="col-md-offset-2	col-md-10">
+            @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Alterar", "Edit", new { id = Model.FabricanteID }, new { @class = "btn btn-danger" })
+        </div>
+        <br />
+        <br />
     </div>
 </div>
 
